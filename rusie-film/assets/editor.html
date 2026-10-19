@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rusie · 互动叙事工作台</title><link rel="stylesheet" href="editor.css"><link rel="stylesheet" href="custom-editor.css"><link rel="stylesheet" href="inspector.css"><link rel="stylesheet" href="asset-editor.css"><script src="shared/custom.js" defer></script><script src="shared/catalog.js" defer></script><script src="shared/story.js" defer></script><script src="custom-editor.js" defer></script><script src="asset-editor.js" defer></script><script src="editor.js" defer></script></head>
+<body>
+  <main class="editor-shell">
+    <aside class="navigation" aria-label="工作台导航">
+      <a class="brand" href="#"><span>R</span><div>RUSIE<small>互动叙事工作台</small></div></a>
+      <div class="project-label">项目</div>
+      <div class="project-chosen"><strong id="work-title">正在打开项目</strong><small>本地</small></div>
+      <div class="divider"></div>
+      <nav class="tabs" role="tablist" aria-label="项目页面" aria-orientation="vertical">
+        <button data-tab="story" role="tab" aria-controls="story-view" aria-selected="true"><span>◇</span>故事全图</button>
+        <button data-tab="media" role="tab" aria-controls="media-view" aria-selected="false"><span>▧</span>资产配置 <small id="asset-count">0</small></button>
+        <button id="preview-nav" type="button"><span>▷</span>预览</button>
+        <button data-tab="components" role="tab" aria-controls="components-view" aria-selected="false"><span>⌘</span>控件节点</button>
+        <button data-tab="settings" role="tab" aria-controls="settings-view" aria-selected="false"><span>≡</span>项目定义</button>
+      </nav>
+      <div class="navigation-footer"><span class="local-label"><i></i>本地文件 · 自动检查外部修改</span><p>用 Codex 或 Claude 编排，<br>在这里查看和调整。</p><span class="app-version">RUSIE FILM / 0.7.0</span></div>
+    </aside>
+    <section class="work-area">
+      <header class="topbar"><div class="page-title"><span id="page-project" class="eyebrow">本地创作</span><h1 id="page-title">故事全图</h1></div><div class="top-actions"><span id="save-state" role="status">正在连接</span><button id="save" class="button">保存项目</button><button id="check" class="button">校验项目 <span id="issue-count"></span></button><button id="preview" class="button">预览</button><button id="export" class="button accent">导出作品</button></div></header>
+      <div id="connection" class="connection" role="alert" hidden><span id="conflict-message"></span><button id="reload" class="button">载入最新版本</button><button id="download" class="button">下载当前草稿</button></div>
+      <div class="work-content">
+        <section id="story-view" class="workspace" aria-label="故事全图" role="tabpanel">
+          <div class="graph-toolbar"><strong>故事全图</strong><span class="graph-summary"><span id="node-count">0</span> 个节点 · <span id="edge-count">0</span> 个走向</span><button id="fit-graph" class="button small">查看全貌</button><button id="zoom-out" class="button small" aria-label="缩小图">−</button><button id="zoom-reset" class="button small" aria-label="重置缩放">100%</button><button id="zoom-in" class="button small" aria-label="放大图">＋</button><details class="node-picker" id="node-picker"><summary>节点索引</summary><div id="node-list"></div></details><button id="add-node" class="button small">＋ 添加片段</button></div>
+          <div class="graph-stage"><div id="graph-scroll" class="graph-scroll"><div id="graph-size"><div id="graph" class="graph"><svg id="connections" aria-label="剧情走向"></svg><div id="cards"></div></div></div></div><aside id="inspector" class="inspector" aria-label="片段编辑" hidden></aside></div>
+        </section>
+        <section id="media-view" class="page-view" role="tabpanel" hidden>
+          <nav id="asset-categories" class="asset-tabs" aria-label="资产分类"></nav>
+          <div class="page-heading"><div><h2 id="asset-category-title">MP4</h2><p id="asset-description">项目中的创作素材，在故事中按需关联。</p></div><div class="asset-library-actions"><input id="asset-search" aria-label="搜索资产" placeholder="搜索名称或 code"><button id="add-catalog-asset" class="button" hidden>＋ 新建资产</button><label id="catalog-upload-label" class="button upload-label" hidden>＋ 导入文件<input id="catalog-upload" type="file"></label></div></div>
+          <section id="asset-form" class="asset-form" aria-label="编辑资产" hidden></section>
+          <section id="mp4-panel"><label class="button upload-label">＋ 导入 MP4<input id="upload" type="file" accept="video/mp4,.mp4" multiple></label><span id="media-total" hidden>0</span><div id="media-grid" class="media-grid"></div><p class="help">单个文件最大 512 MB，实际播放取决于浏览器支持的编码。</p></section>
+          <div id="catalog-grid" class="catalog-grid" hidden></div>
+        </section>
+        <section id="components-view" class="page-view" role="tabpanel" hidden><div class="page-heading"><div><h2>控件节点</h2><p>接入自带运行依赖的 HTML、JavaScript 或游戏引擎 Web 包。</p></div></div><div id="component-list"></div></section>
+        <section id="settings-view" class="page-view" role="tabpanel" hidden><div class="page-heading"><div><h2>项目定义</h2><p>公共设定放在图中，角色资料放在角色中，游玩进度保存在会话变量中。</p></div></div><div class="settings-grid"><section class="settings-card"><h2>作品信息</h2><div id="project-fields"></div><p id="project-directory" class="help path"></p></section><section class="settings-card"><div class="section-heading"><h2>会话变量</h2><button id="add-variable" class="button small">＋ 添加</button></div><div id="variables"></div></section></div><div id="definition-settings" class="settings-grid definition-settings"></div></section>
+      </div>
+      <footer class="statusbar"><span id="status" role="status">正在读取本地项目…</span></footer>
+    </section>
+  </main>
+  <dialog id="preview-dialog"><div class="dialog-header"><span>预览 <small>从所选片段开始 · 使用已保存版本</small></span><button id="close-preview" class="button small">关闭 ×</button></div><iframe id="preview-frame" title="互动影视试玩" allow="autoplay; fullscreen"></iframe></dialog>
+  <dialog id="media-preview-dialog" aria-labelledby="media-preview-title"><div class="dialog-header"><span id="media-preview-title">视频预览</span><button id="close-media-preview" class="button small">关闭 ×</button></div><video id="media-preview-video" controls playsinline preload="metadata"></video><p id="media-preview-message" role="status" hidden></p></dialog>
+  <dialog id="issues-dialog"><div class="dialog-header"><span>项目检查</span><button id="close-issues" class="button small">关闭 ×</button></div><div id="issues" class="issues"></div></dialog>
+</body></html>

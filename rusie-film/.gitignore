@@ -1,0 +1,4 @@
+.rusie-write.lock
+.rusie-*.tmp
+*.upload
+.test-output/

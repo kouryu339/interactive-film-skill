@@ -1,0 +1,21 @@
+{
+  "name": "interactive-film-skill",
+  "version": "0.7.0",
+  "private": true,
+  "description": "An extensible interactive film skill for Codex and Claude Code, with a local editor and inheritable control nodes for custom assets, events, and UI.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "test": "node scripts/test.mjs",
+    "test:browser": "node rusie-film/tests/browser-smoke.mjs",
+    "test:editor": "node rusie-film/tests/browser-editor.mjs",
+    "test:custom": "node rusie-film/tests/browser-custom.mjs",
+    "test:catalog": "node rusie-film/tests/browser-catalog.mjs",
+    "test:presentation": "node rusie-film/tests/browser-presentation.mjs",
+    "pack": "node scripts/package.mjs",
+    "test:control": "node rusie-film/tests/browser-control.mjs",
+    "test:canvas": "node rusie-film/tests/browser-canvas.mjs"
+  }
+}

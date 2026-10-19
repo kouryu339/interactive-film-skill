@@ -1,0 +1,21 @@
+# Current repository only. Earlier projects and local working copies stay on disk.
+/*
+!/.gitignore
+!/.gitattributes
+!/AGENTS.md
+!/README.md
+!/LICENSE
+!/package.json
+!/docs/
+!/scripts/
+!/rusie-film/
+
+**/node_modules/
+**/.test-output/
+**/exports/
+**/.rusie-write.lock
+**/.rusie-*.tmp
+**/*.upload
+**/*.log
+**/.DS_Store
+**/Thumbs.db

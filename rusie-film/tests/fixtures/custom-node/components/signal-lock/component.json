@@ -1,0 +1,7 @@
+{
+  "id": "signal-lock",
+  "label": "港口信号台",
+  "entry": "index.html",
+  "files": ["index.html", "game.js", "runtime.js", "style.css", "labels.json"],
+  "runtime": { "name": "demo-web-module", "version": "1.0.0", "files": ["runtime.js"] }
+}

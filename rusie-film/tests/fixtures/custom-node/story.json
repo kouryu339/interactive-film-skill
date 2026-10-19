@@ -1,0 +1,30 @@
+{
+  "format": "rusie.film/2",
+  "id": "harbor-custom-demo",
+  "title": "港口来信 · 信号台",
+  "start": "arrival",
+  "variables": { "score": 0, "opened": false },
+  "data": { "harbor": { "code": "2410", "maxAttempts": 5, "hint": "你在值班手册上发现了旧编号：2410。" }, "authorNotes": "这段作者资料没有向节点开放。" },
+  "roles": {
+    "detective": { "name": "调查员", "data": { "observation": 3, "privateMemo": "未向节点开放的角色资料。" } },
+    "guard": { "name": "值班人", "data": { "secret": "其他角色的数据不会被默认传入。" } }
+  },
+  "playerRole": "detective",
+  "assets": [{ "id": "opening-clip", "label": "开场演示片段.mp4", "path": "assets/opening.mp4" }],
+  "components": [
+    { "id": "signal-lock", "label": "港口信号台", "entry": "index.html", "files": ["index.html", "game.js", "runtime.js", "style.css", "labels.json"], "runtime": { "name": "demo-web-module", "version": "1.0.0", "files": ["runtime.js"] } }
+  ],
+  "nodes": [
+    { "id": "arrival", "title": "码头上的旧讯息", "text": "值班室里，一台封存的信号机仍然亮着。\n也许失踪的渡轮，曾经留下过消息。", "video": "opening-clip", "ending": false, "choices": [{ "id": "investigate", "label": "检查信号台", "target": "signal" }] },
+    {
+      "id": "signal", "title": "解开信号台", "text": "把你找到的编码输入信号台。", "video": null, "ending": false, "type": "custom",
+      "custom": { "component": "signal-lock", "inputs": { "graph": ["harbor"], "role": ["observation"], "state": ["score"] }, "config": {}, "result": { "score": { "type": "number", "min": 0, "max": 100 } }, "timeoutMs": 1800000 },
+      "choices": [
+        { "id": "solved", "label": "成功接通信号", "target": "found", "capture": { "score": "score" }, "set": { "opened": true } },
+        { "id": "failed", "label": "未能接通信号", "target": "lost", "capture": { "score": "score" } }
+      ]
+    },
+    { "id": "found", "title": "结局 · 海上的回音", "text": "信号台传来熟悉的声音：我一直在等你。", "video": null, "ending": true, "choices": [] },
+    { "id": "lost", "title": "结局 · 未寄出的讯息", "text": "风暴切断了最后的信号。你决定沿着海岸继续寻找。", "video": null, "ending": true, "choices": [] }
+  ]
+}

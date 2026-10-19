@@ -1,0 +1,24 @@
+{
+  "format": "rusie.film/1",
+  "id": "harbor-letter",
+  "title": "港口来信",
+  "start": "arrival",
+  "variables": { "opened": false },
+  "assets": [],
+  "nodes": [
+    { "id": "arrival", "title": "01 · 最后一班渡轮", "text": "渡轮即将离港。一个陌生人把一封信放进你的手里。\n你要打开它，还是交给码头值班人？", "video": null, "ending": false, "choices": [
+      { "id": "open", "label": "打开信封", "target": "letter", "set": { "opened": true } },
+      { "id": "return", "label": "交给值班人", "target": "guard" }
+    ] },
+    { "id": "letter", "title": "02 · 熟悉的笔迹", "text": "信纸上只有一句话：不要登上今晚的渡轮。\n落款，是你失踪多年的姐姐。", "video": null, "ending": false, "choices": [
+      { "id": "stay", "label": "留在码头寻找线索", "target": "stay" },
+      { "id": "board", "label": "登船追寻答案", "target": "sail" }
+    ] },
+    { "id": "guard", "title": "03 · 值班人的沉默", "text": "值班人看着信封，缓缓摇头。\n汽笛响起，他示意你尽快作出决定。", "video": null, "ending": false, "choices": [
+      { "id": "board", "label": "赶上最后一班船", "target": "sail" },
+      { "id": "stay", "label": "留下来问个清楚", "target": "stay" }
+    ] },
+    { "id": "stay", "title": "结局 · 灯塔仍亮着", "text": "渡轮消失在雾里。远处的灯塔闪了三下。\n你的故事，才刚刚开始。", "video": null, "ending": true, "choices": [] },
+    { "id": "sail", "title": "结局 · 雾中的航线", "text": "你登上渡轮。船舱尽头，一个熟悉的身影转过头来。", "video": null, "ending": true, "choices": [] }
+  ]
+}

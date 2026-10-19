@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rusie · 互动影视</title>
+  <link rel="stylesheet" href="player.css"><link rel="stylesheet" href="node-host.css">
+  <script src="shared/custom.js" defer></script><script src="shared/catalog.js" defer></script><script src="shared/story.js" defer></script><script src="shared/canvas-protocol.js" defer></script><script src="node-host.js" defer></script><script src="canvas-player.js" defer></script><script src="scene-player.js" defer></script><script src="player.js" defer></script>
+</head>
+<body>
+  <!--STORY_DATA-->
+  <main class="screen">
+    <div class="picture" id="picture"></div><div class="shade"></div>
+    <section id="custom-stage" class="custom-stage" hidden aria-label="自定义交互"></section>
+    <header class="film-header"><span class="wordmark">RUSIE<span class="mark">●</span></span><span id="film-title">互动影视</span><button id="restart" class="quiet">重新开始</button></header>
+    <div id="node-controls" class="node-controls" hidden><span id="node-status" role="status">正在启动交互…</span><button id="pause-node" class="quiet">暂停交互</button><button id="retry-node" class="quiet" hidden>重新载入</button><button id="cancel-node" class="quiet">取消交互</button></div>
+    <div class="chapter"><span class="chapter-line"></span><span id="chapter-label">INTERACTIVE FILM</span></div>
+    <section class="story-panel" aria-live="polite">
+      <p class="eyebrow" id="eyebrow">YOUR CHOICE, YOUR STORY</p>
+      <h1 id="node-title">正在打开作品</h1><p id="node-text" class="prose"></p>
+      <div id="choices" class="choices"></div>
+      <div id="media-gate" hidden><p id="media-message"></p><button id="resume" class="primary">播放影片</button></div>
+      <p id="notice" class="notice" role="status"></p>
+    </section>
+    <footer><span id="path-label">故事由你决定</span><button id="replay" class="quiet" hidden>重看片段</button><span id="position"></span></footer>
+  </main>
+</body>
+</html>

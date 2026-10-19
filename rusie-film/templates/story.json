@@ -1,0 +1,18 @@
+{
+  "format": "rusie.film/1",
+  "id": "untitled-film",
+  "title": "未命名作品",
+  "start": "start",
+  "variables": {},
+  "assets": [],
+  "nodes": [
+    {
+      "id": "start",
+      "title": "开始",
+      "text": "",
+      "video": null,
+      "ending": true,
+      "choices": []
+    }
+  ]
+}
