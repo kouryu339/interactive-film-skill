@@ -57,4 +57,4 @@ npm run test:control
 npm run pack
 ```
 
-Browser checks require Node.js 22+ and installed Chrome/Chromium; set `CHROME_BINARY` if needed. Read [architecture](docs/architecture.md), [development](docs/development.md), and [workspace boundaries](docs/workspace-boundaries.md). Earlier workspace projects remain outside the current repository scope.
+Browser checks require Node.js 22+ and installed Chrome/Chromium. Read [architecture](docs/architecture.md), [development](docs/development.md), and [workspace boundaries](docs/workspace-boundaries.md).
